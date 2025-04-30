@@ -142,7 +142,8 @@ exports.deleteGoal = async (req, res, next) => {
       });
     }
 
-    await goal.remove();
+    // Fixed: Using deleteOne instead of remove()
+    await Goal.deleteOne({ _id: goal._id });
 
     res.status(200).json({
       success: true,
