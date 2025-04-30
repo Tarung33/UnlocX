@@ -1,3 +1,4 @@
+// Fixed version of client/scripts/generate-favicons.js
 const fs = require('fs');
 const path = require('path');
 const { exec } = require('child_process');
@@ -7,7 +8,8 @@ const { exec } = require('child_process');
 // For macOS: brew install imagemagick
 // For Windows: https://imagemagick.org/script/download.php
 
-const publicDir = path.join(__dirname, '../client/public');
+// Fixed the path to be relative to the script location
+const publicDir = path.join(__dirname, '../public');
 const faviconSvg = path.join(publicDir, 'favicon.svg');
 const outputDir = publicDir;
 

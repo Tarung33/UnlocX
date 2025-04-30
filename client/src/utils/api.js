@@ -27,6 +27,7 @@ api.interceptors.request.use(
 export const registerUser = (userData) => api.post('/auth/register', userData);
 export const loginUser = (userData) => api.post('/auth/login', userData);
 export const getCurrentUser = () => api.get('/auth/me');
+export const getUserStats = () => api.get('/users/stats');
 
 // Platform endpoints
 export const getPlatforms = () => api.get('/platforms');
@@ -35,7 +36,7 @@ export const connectPlatform = (id) => api.post(`/platforms/${id}/connect`);
 export const disconnectPlatform = (id) => api.delete(`/platforms/${id}/connect`);
 
 // Goal endpoints
-export const getGoals = () => api.get('/goals');
+export const getGoals = (params) => api.get('/goals', { params });
 export const getGoal = (id) => api.get(`/goals/${id}`);
 export const createGoal = (goalData) => api.post('/goals', goalData);
 export const updateGoalProgress = (id, progressData) => api.put(`/goals/${id}/progress`, progressData);

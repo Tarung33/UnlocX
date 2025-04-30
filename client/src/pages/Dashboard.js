@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useAuth } from '../../contexts/AuthContext';
-import { getGoals, getUserStats } from '../../utils/api';
-import GoalCard from './GoalCard';
-import ProgressTracker from './ProgressTracker';
-import RewardCard from './RewardCard';
+import { useAuth } from '../contexts/AuthContext';
+import { getGoals, getUserStats } from '../utils/api';
+import GoalCard from '../components/dashboard/GoalCard';
+import ProgressTracker from '../components/dashboard/ProgressTracker';
+import RewardCard from '../components/dashboard/RewardCard';
 
 function Dashboard() {
   const { currentUser } = useAuth();
@@ -27,15 +27,18 @@ function Dashboard() {
         const goalsRes = await getGoals({ limit: 3, status: 'active' });
         setGoals(goalsRes.data.data);
         
-        // Fetch user stats
+        // Fetch user stats - Add this function to api.js
         const statsRes = await getUserStats();
         setStats(statsRes.data.data);
         
-        // Get featured rewards (assuming the API supports this)
-        // In a real app, you might get this from the rewards API with a featured flag
-        const rewardsRes = await fetch('/api/rewards/featured');
-        const rewardsData = await rewardsRes.json();
-        setRewards(rewardsData.data.slice(0, 3)); // Get first 3 featured rewards
+        // Get featured rewards (this will need to be modified to use the getRewards function)
+        try {
+          const rewardsRes = await getRewards();
+          setRewards(rewardsRes.data.data.slice(0, 3)); // Get first 3 rewards
+        } catch (rewardErr) {
+          console.error('Error fetching rewards:', rewardErr);
+          setRewards([]);
+        }
         
         setLoading(false);
       } catch (err) {
