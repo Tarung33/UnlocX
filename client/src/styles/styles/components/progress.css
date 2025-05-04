@@ -1,0 +1,6 @@
+.progress-bar {
+  @apply h-2 bg-gray-200 rounded-full;
+}
+.progress-fill {
+  @apply h-2 bg-[var(--primary)] rounded-full transition-all duration-300;
+}
