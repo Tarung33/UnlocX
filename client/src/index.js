@@ -1,14 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import { BrowserRouter } from 'react-router-dom';
+import ReactDOM from 'react-dom/client';
 
-ReactDOM.render(
+// ✅ Replace index.css with this:
+import 'C:/Users/DELL/Desktop/unlocx/UnlocX/client/src/styles/styles/tailwind.css';
+
+import App from './App';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>,
-  document.getElementById('root')
+    <App />
+  </React.StrictMode>
 );
