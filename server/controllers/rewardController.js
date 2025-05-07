@@ -1,6 +1,3 @@
-const Reward = require('../models/Reward');
-const User = require('../models/User');
-
 // @desc    Get all rewards
 // @route   GET /api/rewards
 // @access  Public
@@ -79,6 +76,23 @@ exports.claimReward = async (req, res, next) => {
         reward,
         userPoints: user.points,
       },
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+// @desc    Get featured rewards
+// @route   GET /api/rewards/featured
+// @access  Public
+exports.getFeaturedRewards = async (req, res, next) => {
+  try {
+    const featuredRewards = await Reward.find({ active: true, featured: true });
+
+    res.status(200).json({
+      success: true,
+      count: featuredRewards.length,
+      data: featuredRewards,
     });
   } catch (err) {
     next(err);

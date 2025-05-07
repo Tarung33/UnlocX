@@ -1,0 +1,3 @@
+.dashboard-card {
+  @apply bg-white p-4 shadow-md rounded-lg;
+}

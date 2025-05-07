@@ -2,13 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 // ✅ Replace index.css with this:
-import 'C:/Users/DELL/Desktop/unlocx/UnlocX/client/src/styles/styles/tailwind.css';
+import 'C:/Users/tarun/OneDrive/Desktop/UnlocX/client/src/index.css';
 
 import App from './App';
+import { AuthProvider } from './contexts/AuthContext';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </Router>
   </React.StrictMode>
 );
