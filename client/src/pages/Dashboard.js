@@ -64,7 +64,7 @@ const Dashboard = () => {
           onClick={() => handlePlatformConnect('GitHub')}
           className="bg-gray-800 hover:bg-gray-900 px-6 py-3 rounded-md flex items-center space-x-3"
         >
-          <img src="https://img.icons8.com/ios-glyphs/24/ffffff/udemy-logo.png" alt="Udemy" />
+          <img src="https://static.vecteezy.com/system/resources/previews/046/437/277/non_2x/udemy-transparent-logo-free-png.png" alt="Udemy" width="25" height="25" />
           <span>Udemy</span>
         </button>
         <button
