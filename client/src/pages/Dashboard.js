@@ -1,153 +1,90 @@
-import React, { useState, useEffect } from 'react';
-import { useAuth } from '../contexts/AuthContext';
-import { getGoals, getUserStats } from '../utils/api';
-import GoalCard from '../components/dashboard/GoalCard';
-import ProgressTracker from '../components/dashboard/ProgressTracker';
-import RewardCard from '../components/dashboard/RewardCard';
+import React, { useState } from 'react';
 
-function Dashboard() {
-  const { currentUser } = useAuth();
-  const [goals, setGoals] = useState([]);
-  const [rewards, setRewards] = useState([]);
-  const [stats, setStats] = useState({
-    completedGoals: 0,
-    totalPoints: 0,
-    currentStreak: 0,
-    longestStreak: 0,
-  });
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+const Dashboard = () => {
+  const [email, setEmail] = useState('');
+  const adminEmail = 'taruntaru380@gmail.com';
 
-  useEffect(() => {
-    const fetchDashboardData = async () => {
-      try {
-        setLoading(true);
-        
-        // Fetch goals
-        const goalsRes = await getGoals({ limit: 3, status: 'active' });
-        setGoals(goalsRes.data.data);
-        
-        // Fetch user stats - Add this function to api.js
-        const statsRes = await getUserStats();
-        setStats(statsRes.data.data);
-        
-        // Get featured rewards (this will need to be modified to use the getRewards function)
-        try {
-          const rewardsRes = await getRewards();
-          setRewards(rewardsRes.data.data.slice(0, 3)); // Get first 3 rewards
-        } catch (rewardErr) {
-          console.error('Error fetching rewards:', rewardErr);
-          setRewards([]);
-        }
-        
-        setLoading(false);
-      } catch (err) {
-        console.error('Error fetching dashboard data:', err);
-        setError('Failed to load dashboard data');
-        setLoading(false);
-      }
-    };
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
 
-    fetchDashboardData();
-  }, []);
+  const handleConnectSubmit = (e) => {
+    e.preventDefault();
+    if (email.toLowerCase() === adminEmail.toLowerCase()){
+      window.location.href = '/dashborad_admin.html';
+    } else {
+      alert('Email does not match admin email.');
+    }
+  };
 
-  if (loading) {
-    return <div className="text-center py-8">Loading dashboard...</div>;
-  }
-
-  if (error) {
-    return (
-      <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-        <span className="block sm:inline">{error}</span>
-      </div>
-    );
-  }
+  const handlePlatformConnect = (platform) => {
+    alert(`Connecting to ${platform}...`);
+    // Implement platform connection logic here
+  };
 
   return (
-    <div className="space-y-8">
-      {/* Welcome & Stats */}
-      <div className="bg-white shadow rounded-lg p-6">
-        <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-6">
-          <div>
-            <h1 className="text-2xl font-bold mb-2">Welcome, {currentUser?.name}!</h1>
-            <p className="text-gray-600">Here's your progress summary</p>
-          </div>
-          <div className="mt-4 md:mt-0">
-            <div className="inline-flex items-center bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
-              <span className="font-semibold mr-1">Level {currentUser?.level || 1}</span>
-              <span>• {currentUser?.points || 0} points</span>
-            </div>
-          </div>
-        </div>
-        
-        {/* Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="bg-gray-50 rounded-lg p-4">
-            <p className="text-gray-500 text-sm">Completed Goals</p>
-            <p className="text-2xl font-bold">{stats.completedGoals}</p>
-          </div>
-          <div className="bg-gray-50 rounded-lg p-4">
-            <p className="text-gray-500 text-sm">Total Points</p>
-            <p className="text-2xl font-bold">{stats.totalPoints}</p>
-          </div>
-          <div className="bg-gray-50 rounded-lg p-4">
-            <p className="text-gray-500 text-sm">Current Streak</p>
-            <p className="text-2xl font-bold">{stats.currentStreak} days</p>
-          </div>
-          <div className="bg-gray-50 rounded-lg p-4">
-            <p className="text-gray-500 text-sm">Longest Streak</p>
-            <p className="text-2xl font-bold">{stats.longestStreak} days</p>
-          </div>
-        </div>
-      </div>
-      
-      {/* Progress Tracker */}
-      <div className="bg-white shadow rounded-lg p-6">
-        <h2 className="text-xl font-bold mb-4">Your Progress</h2>
-        <ProgressTracker />
-      </div>
-      
-      {/* Active Goals */}
-      <div className="bg-white shadow rounded-lg p-6">
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-bold">Active Goals</h2>
-          <a href="/goals" className="text-blue-600 hover:text-blue-800 text-sm font-medium">
-            View All
-          </a>
-        </div>
-        
-        {goals.length === 0 ? (
-          <p className="text-gray-500">No active goals. Start adding some!</p>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {goals.map(goal => (
-              <GoalCard key={goal._id} goal={goal} />
-            ))}
-          </div>
-        )}
-      </div>
-      
-      {/* Featured Rewards */}
-      <div className="bg-white shadow rounded-lg p-6">
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-bold">Featured Rewards</h2>
-          <a href="/rewards" className="text-blue-600 hover:text-blue-800 text-sm font-medium">
-            View All
-          </a>
-        </div>
-        
-        {rewards.length === 0 ? (
-          <p className="text-gray-500">No rewards available.</p>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {rewards.map(reward => (
-              <RewardCard key={reward._id} reward={reward} />
-            ))}
-          </div>
-        )}
+    <div className="min-h-screen bg-gradient-to-r from-grey-500 to-violet-600 p-8 text-white flex flex-col items-center">
+      <header className="mb-8 text-center max-w-xl">
+        <h1 className="text-5xl font-extrabold mb-4">Welcome to Your Dashboard</h1>
+        <p className="text-lg opacity-80">Manage your goals, track progress, and connect your accounts.</p>
+      </header>
+
+      <form onSubmit={handleConnectSubmit} className="bg-white bg-opacity-20 rounded-lg p-6 shadow-lg w-full max-w-md mb-8">
+        <label htmlFor="email" className="block mb-2 font-semibold text-white">
+          Connect with Email
+        </label>
+        <input
+          id="email"
+          type="email"
+          value={email}
+          onChange={handleEmailChange}
+          placeholder="Enter your email"
+          required
+          className="w-full px-4 py-2 rounded-md text-black mb-4"
+        />
+        <button
+          type="submit"
+          className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 rounded-md transition"
+        >
+          Connect
+        </button>
+      </form>
+
+      <div className="text-white opacity-90 mb-4">or connect with other platforms</div>
+
+      <div className="flex justify-center space-x-6">
+        <button
+          onClick={() => handlePlatformConnect('Google')}
+          className="bg-red-500 hover:bg-red-600 px-6 py-3 rounded-md flex items-center space-x-3"
+        >
+          <img src="https://img.icons8.com/color/24/000000/google-logo.png" alt="Google" />
+          <span>Google</span>
+        </button>
+        <button
+          onClick={() => handlePlatformConnect('GitHub')}
+          className="bg-gray-800 hover:bg-gray-900 px-6 py-3 rounded-md flex items-center space-x-3"
+        >
+          <img src="https://img.icons8.com/ios-glyphs/24/ffffff/github.png" alt="GitHub" />
+          <span>GitHub</span>
+        </button>
+        <button
+          onClick={() => handlePlatformConnect('Unlocx')}
+          className="bg-purple-600 hover:bg-purple-700 px-6 py-3 rounded-md flex items-center space-x-3"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 text-white"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+          </svg>
+          <span>Unlocx</span>
+        </button>
       </div>
     </div>
   );
-}
+};
 
 export default Dashboard;

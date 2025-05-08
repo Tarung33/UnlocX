@@ -32,9 +32,9 @@ function Home() {
           </div>
           <div className="md:w-1/2">
             <img
-              src="/api/placeholder/600/400"
+              src="/assests/images/Logo.png.jpeg"
               alt="Learning dashboard"
-              className="rounded-lg shadow-xl"
+              className="rounded-lg shadow-xl fade-in"
             />
           </div>
         </div>
