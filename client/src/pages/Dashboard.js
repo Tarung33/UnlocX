@@ -64,8 +64,8 @@ const Dashboard = () => {
           onClick={() => handlePlatformConnect('GitHub')}
           className="bg-gray-800 hover:bg-gray-900 px-6 py-3 rounded-md flex items-center space-x-3"
         >
-          <img src="https://img.icons8.com/ios-glyphs/24/ffffff/github.png" alt="GitHub" />
-          <span>GitHub</span>
+          <img src="https://img.icons8.com/ios-glyphs/24/ffffff/udemy-logo.png" alt="Udemy" />
+          <span>Udemy</span>
         </button>
         <button
           onClick={() => handlePlatformConnect('Unlocx')}
@@ -80,7 +80,7 @@ const Dashboard = () => {
           >
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
           </svg>
-          <span>Unlocx</span>
+          <span>edX</span>
         </button>
       </div>
     </div>
