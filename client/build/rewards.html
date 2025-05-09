@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Unlocx - Rewards</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet" />
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-indigo-700 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <h1 class="text-xl font-bold">Unlocx</h1>
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="dashborad_admin.html" class="px-3 py-2 rounded-md text-sm font-medium text-indigo-200 hover:text-white">Dashboard</a>
+                            <a href="my_courses.html" class="px-3 py-2 rounded-md text-sm font-medium text-indigo-200 hover:text-white">My Courses</a>
+                            <a href="rewards.html" class="bg-indigo-800 px-3 py-2 rounded-md text-sm font-medium">Rewards</a>
+                            <a href="#" class="px-3 py-2 rounded-md text-sm font-medium text-indigo-200 hover:text-white">Leaderboard</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <div class="relative">
+                        <button class="text-white hover:text-gray-200 mr-4">
+                            <i class="fas fa-bell text-xl"></i>
+                            <span class="absolute top-0 right-0 bg-red-500 text-white rounded-full w-4 h-4 text-xs flex items-center justify-center">0</span>
+                        </button>
+                    </div>
+                    <div class="flex items-center">
+                        <img src="https://img.icons8.com/ios-filled/48/000000/user-male-circle.png" class="rounded-full" alt="Student Avatar" />
+                        <span class="ml-2 text-sm font-medium">Tarun G</span>
+                        <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">Rewards</h2>
+        <div class="mb-6">
+        <p class="text-lg font-semibold">Your Points: <span id="points-display" class="text-indigo-600">0</span></p>
+        </div>
+
+        <section class="mb-10">
+            <h3 class="text-2xl font-semibold text-gray-800 mb-4">Available Rewards</h3>
+            <div class="space-y-6">
+                <div class="flex items-center bg-gray-50 p-4 rounded-lg shadow">
+                    <img src="https://img.icons8.com/color/96/000000/gift.png" alt="Gift Box" class="w-16 h-16 rounded-full mr-4" />
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-900">Gift Box</h4>
+                        <p class="text-gray-600 text-sm mb-1">A special gift box with surprise items.</p>
+                        <p class="text-indigo-600 font-semibold cursor-pointer underline reward-points" data-points="1000" title="Click to claim reward">Requires 1000 points</p>
+                    </div>
+                </div>
+                <div class="flex items-center bg-gray-50 p-4 rounded-lg shadow">
+                    <img src="https://img.icons8.com/color/96/000000/coffee-to-go.png" alt="Coffee Voucher" class="w-16 h-16 rounded-full mr-4" />
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-900">Coffee Voucher</h4>
+                        <p class="text-gray-600 text-sm mb-1">Enjoy a free coffee at your favorite cafe.</p>
+                        <p class="text-indigo-600 font-semibold cursor-pointer underline reward-points" data-points="500" title="Click to claim reward">Requires 500 points</p>
+                    </div>
+                </div>
+                <div class="flex items-center bg-gray-50 p-4 rounded-lg shadow">
+                    <img src="https://img.icons8.com/color/96/000000/headphones.png" alt="Headphones" class="w-16 h-16 rounded-full mr-4" />
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-900">Wireless Headphones</h4>
+                        <p class="text-gray-600 text-sm mb-1">High-quality wireless headphones for music lovers.</p>
+                        <p class="text-indigo-600 font-semibold cursor-pointer underline reward-points" data-points="2000" title="Click to claim reward">Requires 2000 points</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-10">
+            <h3 class="text-2xl font-semibold text-gray-800 mb-4">Claimed Rewards</h3>
+            <div class="space-y-6">
+                <p class="text-gray-600">You have not claimed any rewards yet.</p>
+            </div>
+        </section>
+
+        <section>
+            <h3 class="text-2xl font-semibold text-gray-800 mb-4">Expired Rewards</h3>
+            <div class="space-y-6">
+                <p class="text-gray-600">No expired rewards.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Modal functionality
+        function showModal(title, content) {
+            const modalOverlay = document.createElement('div');
+            modalOverlay.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+
+            const modalContent = document.createElement('div');
+            modalContent.className = 'bg-white rounded-lg shadow-xl max-w-md w-full mx-4';
+
+            const modalHeader = document.createElement('div');
+            modalHeader.className = 'px-6 py-4 border-b';
+            modalHeader.innerHTML = `<h3 class="text-lg font-semibold text-gray-800">${title}</h3>`;
+
+            const modalBody = document.createElement('div');
+            modalBody.className = 'px-6 py-4';
+            modalBody.innerHTML = content;
+
+            const modalFooter = document.createElement('div');
+            modalFooter.className = 'px-6 py-3 bg-gray-50 flex justify-end rounded-b-lg';
+            modalFooter.innerHTML = '<button class="bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded-md text-sm">Close</button>';
+
+            modalContent.appendChild(modalHeader);
+            modalContent.appendChild(modalBody);
+            modalContent.appendChild(modalFooter);
+            modalOverlay.appendChild(modalContent);
+
+            document.body.appendChild(modalOverlay);
+
+            modalFooter.querySelector('button').addEventListener('click', () => {
+                document.body.removeChild(modalOverlay);
+            });
+        }
+
+        // Reward claiming functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const pointsDisplay = document.getElementById('points-display');
+            let currentPoints = parseInt(localStorage.getItem('unlocxPoints')) || parseInt(pointsDisplay.textContent) || 0;
+            pointsDisplay.textContent = currentPoints;
+
+            const rewardPointsElements = document.querySelectorAll('.reward-points');
+            rewardPointsElements.forEach(el => {
+                el.style.cursor = 'pointer';
+                el.addEventListener('click', () => {
+                    const requiredPoints = parseInt(el.getAttribute('data-points'));
+                    if (currentPoints >= requiredPoints) {
+                        const couponCode = 'UNLOCX-' + Math.random().toString(36).substring(2, 8).toUpperCase();
+                        showModal('Congratulations! 🎉', `
+                            <div class="bg-white p-6 rounded-lg shadow-lg max-w-sm mx-auto text-center">
+                                <h3 class="text-3xl font-extrabold mb-4 text-indigo-700 animate-pulse">🎉 Congratulations! 🎉</h3>
+                                <p class="mb-6 text-gray-700 text-lg font-semibold">You have successfully claimed your reward.</p>
+                                <div class="bg-indigo-100 border border-indigo-400 rounded-md py-3 px-4 mb-6 inline-block select-all cursor-pointer" id="coupon-code">
+                                    <span class="text-indigo-800 font-mono text-lg font-semibold">${couponCode}</span>
+                                </div>
+                                <button id="copy-coupon" class="bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-6 rounded-md text-sm mb-4">
+                                    <i class="fas fa-copy mr-2"></i> Copy Code
+                                </button>
+                            </div>
+                        `);
+
+                        document.getElementById('copy-coupon').addEventListener('click', () => {
+                            const couponText = document.getElementById('coupon-code').innerText;
+                            navigator.clipboard.writeText(couponText).then(() => {
+                                alert('Coupon code copied to clipboard!');
+                            }).catch(() => {
+                                alert('Failed<edit_file>
+<path>client/public/rewards.html</path>
+<content>
+<<<<<<< SEARCH
+        const pointsEarned = 500;
+
+        // Reward claiming functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const pointsDisplay = document.getElementById('points-display');
+            let currentPoints = parseInt(pointsDisplay.textContent) || 0;
+            pointsDisplay.textContent = 0;
+
+            const rewardPointsElements = document.querySelectorAll('.reward-points');
+            rewardPointsElements.forEach(el => {
+                el.style.cursor = 'pointer';
+                el.addEventListener('click', () => {
+                    const requiredPoints = parseInt(el.getAttribute('data-points'));
+                    if (currentPoints >= requiredPoints) {
+                        // Show loading state on the element
+                        const originalText = el.textContent;
+                        el.textContent = 'Processing...';
+                        el.style.pointerEvents = 'none';
+
+                        setTimeout(() => {
+                            const couponCode = 'UNLOCX-' + Math.random().toString(36).substring(
+                            showModal('Congratulations! 🎉', `
+                                <div class="text-center mb-4">
+                                    <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-indigo-100 mb-4">
+                                        <i class="fas fa-trophy text-indigo-600 text-xl"></i>
+                                    </div>
+                                    <h3 class="text-lg font-medium text-gray-900">Congratulations!</h3>
+                                    <p class="text-gray-500 mt-2">You have successfully claimed your reward.</p>
+                                </div>
+                                <div class="bg-gray-100 p-4 rounded-md">
+                                    <p class="font-medium text-gray-700">Your Unlocx Balance:</p>
+                                    <div class="flex justify-between items-center mt-2">
+                                        <span>Previous Balance</span>
+                                        <span>${currentPoints} points</span>
+                                    </div>
+                                    <div class="flex justify-between items-center mt-1">
+                                        <span>Points Deducted</span>
+                                        <span class="text-red-600">-${requiredPoints} points</span>
+                                    </div>
+                                    <div class="border-t border-gray-300 mt-2 pt-2 flex justify-between items-center">
+                                        <span class="font-semibold">New Balance</span>
+                                        <span class="font-semibold">${currentPoints - requiredPoints} points</span>
+                                    </div>
+                                </div>
+                            `);
+
+                            currentPoints -= requiredPoints;
+                            localStorage.setItem('unlocxPoints', currentPoints);
+                            pointsDisplay.textContent = currentPoints;
+
+                            // Disable the element to indicate claimed
+                            el.style.opacity = '0.6';
+
+                            // Restore the original text after modal close
+                            const modalCloseButton = document.querySelector('.fixed.inset-0 .rounded-b-lg button');
+                            if (modalCloseButton) {
+                                modalCloseButton.addEventListener('click', () => {
+                                    el.textContent = originalText;
+                                    el.style.pointerEvents = 'auto';
+                                });
+                            }
+                        }, 1500);
+                    } else {
+                        showModal('Insufficient Points', `
+                            <div class="text-center">
+                                <p class="text-gray-700 mb-4">You need ${requiredPoints} points to claim this reward.</p>
+                            </div>
+                        `);
+                    }
+                });
+            });
+        });
+=======
+        const pointsEarned = 500;
+
+        // Reward claiming functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const pointsDisplay = document.getElementById('points-display');
+            let currentPoints = parseInt(localStorage.getItem('unlocxPoints')) || parseInt(pointsDisplay.textContent) || 0;
+            pointsDisplay.textContent = currentPoints;
+
+            const rewardPointsElements = document.querySelectorAll('.reward-points');
+            rewardPointsElements.forEach(el => {
+                el.style.cursor = 'pointer';
+                el.addEventListener('click', () => {
+                    const requiredPoints = parseInt(el.getAttribute('data-points'));
+                    if (currentPoints >= requiredPoints) {
+                        // Show loading state on the element
+                        const originalText = el.textContent;
+                        el.textContent = 'Processing...';
+                        el.style.pointerEvents = 'none';
+
+                        setTimeout(() => {
+                            const couponCode = 'UNLOCX-' + Math.random().toString(36).substring(2, 8).toUpperCase();
+                            showModal('Congratulations! 🎉', `
+                                <div class="text-center mb-4">
+                                    <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-indigo-100 mb-4">
+                                        <i class="fas fa-trophy text-indigo-600 text-xl"></i>
+                                    </div>
+                                    <h3 class="text-lg font-medium text-gray-900">Congratulations!</h3>
+                                    <p class="text-gray-500 mt-2">You have successfully claimed your reward.</p>
+                                </div>
+                                <div class="bg-gray-100 p-4 rounded-md">
+                                    <p class="font-medium text-gray-700">Your Unlocx Balance:</p>
+                                    <div class="flex justify-between items-center mt-2">
+                                        <span>Previous Balance</span>
+                                        <span>${currentPoints} points</span>
+                                    </div>
+                                    <div class="flex justify-between items-center mt-1">
+                                        <span>Points Deducted</span>
+                                        <span class="text-red-600">-${requiredPoints} points</span>
+                                    </div>
+                                    <div class="border-t border-gray-300 mt-2 pt-2 flex justify-between items-center">
+                                        <span class="font-semibold">New Balance</span>
+                                        <span class="font-semibold">${currentPoints - requiredPoints} points</span>
+                                    </div>
+                                </div>
+                            `);
+
+                            currentPoints -= requiredPoints;
+                            localStorage.setItem('unlocxPoints', currentPoints);
+                            pointsDisplay.textContent = currentPoints;
+
+                            // Disable the element to indicate claimed
+                            el.style.opacity = '0.6';
+
+                            // Restore the original text after modal close
+                            const modalCloseButton = document.querySelector('.fixed.inset-0 .rounded-b-lg button');
+                            if (modalCloseButton) {
+                                modalCloseButton.addEventListener('click', () => {
+                                    el.textContent = originalText;
+                                    el.style.pointerEvents = 'auto';
+                                });
+                            }
+                        }, 1500);
+                    } else {
+                    }
+    </script>
+</body>
+</html>

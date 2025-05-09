@@ -28,6 +28,12 @@ function Home() {
               >
                 Login
               </Link>
+              <Link
+                to="/admin"
+                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-200"
+              >
+                Admin Login
+              </Link>
             </div>
           </div>
           <div className="md:w-1/2">

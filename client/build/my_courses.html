@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Unlocx - My Courses</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet" />
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-indigo-700 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <h1 class="text-xl font-bold">Unlocx</h1>
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="dashborad_admin.html" class="px-3 py-2 rounded-md text-sm font-medium text-indigo-200 hover:text-white">Dashboard</a>
+                            <a href="my_courses.html" class="bg-indigo-800 px-3 py-2 rounded-md text-sm font-medium">My Courses</a>
+                            <a href="rewards.html" class="px-3 py-2 rounded-md text-sm font-medium text-indigo-200 hover:text-white">Rewards</a>
+                            <a href="#" class="px-3 py-2 rounded-md text-sm font-medium text-indigo-200 hover:text-white">Leaderboard</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <div class="relative">
+                        <button class="text-white hover:text-gray-200 mr-4">
+                            <i class="fas fa-bell text-xl"></i>
+                            <span class="absolute top-0 right-0 bg-red-500 text-white rounded-full w-4 h-4 text-xs flex items-center justify-center">0</span>
+                        </button>
+                    </div>
+                    <div class="flex items-center">
+                        <img src="https://img.icons8.com/ios-filled/48/000000/user-male-circle.png" class="rounded-full" alt="Student Avatar" />
+                        <span class="ml-2 text-sm font-medium">Tarun G</span>
+                        <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">My Courses</h2>
+
+        <div class="space-y-8">
+            <!-- Course 1: Completed -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-semibold text-gray-800">Advanced Python Programming</h3>
+                    <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Completed</span>
+                </div>
+                <p class="text-gray-600 mb-2">Course ID: PY-ADV-2025</p>
+                <div class="mb-4">
+                    <div class="flex justify-between mb-1">
+                        <span class="text-sm font-medium text-gray-700">Progress</span>
+                        <span class="text-sm font-medium text-gray-700">100%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-green-600 h-2.5 rounded-full" style="width: 100%"></div>
+                    </div>
+                </div>
+                <div class="flex items-center text-sm text-gray-500 mb-4">
+                    <i class="far fa-calendar-alt mr-2"></i>
+                    <span>Completed on: April 15, 2025</span>
+                </div>
+                <div class="flex items-center text-sm text-gray-500 mb-6">
+                    <i class="far fa-clock mr-2"></i>
+                    <span>24 hours of content</span>
+                </div>
+                <h4 class="font-semibold mb-2">Modules:</h4>
+                <ul class="list-disc list-inside text-gray-700 mb-4">
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>Introduction to Python</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>Data Structures</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>Object-Oriented Programming</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>Advanced Functions</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>Modules and Packages</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>File Handling</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>Error Handling</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>Working with Databases</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>Web Scraping</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>Final Project</li>
+                </ul>
+                <button class="bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-6 rounded-md text-sm">View Certificate</button>
+            </div>
+
+            <!-- Course 2: In Progress -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-semibold text-gray-800">Web Development Bootcamp</h3>
+                    <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">In Progress</span>
+                </div>
+                <p class="text-gray-600 mb-2">Course ID: WEB-DEV-2025</p>
+                <div class="mb-4">
+                    <div class="flex items-center text-sm text-gray-500 mb-4">
+                        <i class="far fa-calendar-alt mr-2"></i>
+                        <span>Started on: February 10, 2025</span>
+                    </div>
+                    <div class="flex items-center text-sm text-gray-500 mb-6">
+                        <i class="far fa-clock mr-2"></i>
+                        <span>18/26 hours completed</span>
+                    </div>
+                </div>
+                <h4 class="font-semibold mb-2">Modules:</h4>
+                <ul class="list-disc list-inside text-gray-700 mb-4">
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>HTML Basics</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>CSS Fundamentals</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>JavaScript Essentials</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>Responsive Design</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>Version Control with Git</li>
+                    <li>JavaScript Frameworks</li>
+                    <li>Backend Development with Node.js</li>
+                    <li>Databases and APIs</li>
+                    <li>Deployment</li>
+                    <li>Final Project</li>
+                </ul>
+                <button class="bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-6 rounded-md text-sm">Continue Learning</button>
+            </div>
+        </div>
+    </main>
+    <script>
+        // Modal functionality
+        function showModal(title, content) {
+            // Create modal elements
+            const modalOverlay = document.createElement('div');
+            modalOverlay.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+            
+            const modalContent = document.createElement('div');
+            modalContent.className = 'bg-white rounded-lg shadow-xl max-w-md w-full mx-4';
+            
+            const modalHeader = document.createElement('div');
+            modalHeader.className = 'px-6 py-4 border-b';
+            modalHeader.innerHTML = `<h3 class="text-lg font-semibold text-gray-800">${title}</h3>`;
+            
+            const modalBody = document.createElement('div');
+            modalBody.className = 'px-6 py-4';
+            modalBody.innerHTML = content;
+            
+            const modalFooter = document.createElement('div');
+            modalFooter.className = 'px-6 py-3 bg-gray-50 flex justify-end rounded-b-lg';
+            modalFooter.innerHTML = '<button class="bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded-md text-sm">Close</button>';
+            
+            // Assemble modal
+            modalContent.appendChild(modalHeader);
+            modalContent.appendChild(modalBody);
+            modalContent.appendChild(modalFooter);
+            modalOverlay.appendChild(modalContent);
+            
+            // Add to DOM
+            document.body.appendChild(modalOverlay);
+            
+            // Close functionality
+            modalFooter.querySelector('button').addEventListener('click', function() {
+                document.body.removeChild(modalOverlay);
+            });
+        }
+
+        // View certificate functionality for my_courses.html
+        document.addEventListener('DOMContentLoaded', () => {
+            const viewCertificateBtn = document.querySelector('button.bg-indigo-600.text-white.py-2.px-6.rounded-md.text-sm');
+            if (viewCertificateBtn) {
+                viewCertificateBtn.addEventListener('click', () => {
+                    showModal('Course Certificate', `
+                        <div class="bg-gray-100 p-6 border border-gray-200 rounded-md text-center">
+                            <div class="flex justify-center mb-4">
+                                <i class="fas fa-award text-yellow-500 text-4xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">CERTIFICATE OF COMPLETION</h3>
+                            <p class="text-lg mb-3">This certifies that</p>
+                            <p class="text-xl font-semibold mb-3">TARUN G</p>
+                            <p class="text-lg mb-3">has successfully completed the course</p>
+                            <p class="text-xl font-semibold mb-3">Advanced Python Programming</p>
+                            <p class="text-lg mb-3">on April 15, 2025</p>
+                            <div class="border-t border-gray-300 pt-4 mt-4">
+                                <p class="text-sm text-gray-500">Certificate ID: CERT-PY-ADV-2025-042</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 flex justify-center">
+                            <button class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-md text-sm mr-2">
+                                <i class="fas fa-download mr-1"></i> Download PDF
+                            </button>
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md text-sm">
+                                <i class="fas fa-share-alt mr-1"></i> Share
+                            </button>
+                        </div>
+                    `);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

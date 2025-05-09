@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const Dashboard = () => {
   const [email, setEmail] = useState('');
-  const adminEmail = 'taruntaru380@gmail.com';
+  const adminEmail = 'tarung@gmail.com';
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);

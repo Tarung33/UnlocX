@@ -47,4 +47,7 @@ export const getRewards = () => api.get('/rewards');
 export const getReward = (id) => api.get(`/rewards/${id}`);
 export const claimReward = (id) => api.post(`/rewards/${id}/claim`);
 
+
+
 export default api;
+
